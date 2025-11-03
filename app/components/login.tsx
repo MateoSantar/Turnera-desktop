@@ -6,17 +6,26 @@ import Link from 'next/link';
 
 const poppins = Poppins({ style: "normal", weight: "300" });
 export default function LoginPage() {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const response = await fetch('http://localhost:3000/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+
+        });
+
+        const data = await response.json();
+        console.log(data);
+    }
     return (
         <div className={`flex flex-col items-center ${poppins.className}`}>
             <h1 className={`text-4xl tracking-wider text-white`}>HAIRCUT</h1>
             <form
                 className="bg-white p-4 rounded-sm w-100 mt-5"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    // TODO: manejar login
-                }}
+                onSubmit={handleLogin}
             >
                 <header className="py-4 flex flex-col items-center">
                     <label className="w-full">
@@ -29,6 +38,7 @@ export default function LoginPage() {
                                 required
                                 className="bg-transparent flex-1 outline-none text-gray-700 placeholder-gray-400 pl-3"
                                 aria-label="Correo electrónico"
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                     </label>
@@ -43,6 +53,7 @@ export default function LoginPage() {
                                 required
                                 className="bg-transparent flex-1 outline-none text-gray-700 placeholder-gray-400 pl-3"
                                 aria-label="Contraseña"
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
@@ -58,7 +69,7 @@ export default function LoginPage() {
                 <span className='text-sm flex flex-row justify-center mt-5'>
                     ¿No posee cuenta?
                     <Link
-                        href={"/signin"} /* Aca redirige al componente de registro */
+                        href={"/signin"} /* Aca redirige al componente de registro, !IMPORTANTE que no se pq tendria */
                         className="ml-1 text-blue-500"
                     >
                         Registrese
