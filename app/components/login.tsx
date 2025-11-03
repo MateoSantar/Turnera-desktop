@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 import { EnvelopeIcon, KeyIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+import Link from 'next/link';
+
 const poppins = Poppins({ style: "normal", weight: "300" });
 export default function LoginPage() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     return (
-        <div className='flex flex-col items-center'>
-            <h1 className={`text-4xl ${poppins.className} tracking-wider text-white`}>HAIRCUT</h1>
+        <div className={`flex flex-col items-center ${poppins.className}`}>
+            <h1 className={`text-4xl tracking-wider text-white`}>HAIRCUT</h1>
             <form
                 className="bg-white p-4 rounded-sm w-100 mt-5"
                 onSubmit={(e) => {
@@ -30,10 +32,9 @@ export default function LoginPage() {
                                 aria-label="Correo electrónico"
                             />
                         </div>
-
                     </label>
 
-                    <label className="w-full mt-6">
+                    <label className="w-full mt-10">
                         <div className="flex items-center bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 transition-all">
                             <KeyIcon className="w-5 h-5 text-gray-500" />
                             <input
@@ -55,6 +56,15 @@ export default function LoginPage() {
                 >
                     Ingresar
                 </button>
+                <span className='text-sm flex flex-row justify-center mt-5'>
+                    ¿No posee cuenta?
+                    <Link
+                        href={""} /* Aca redirige al componente de registro */
+                        className="ml-1 text-blue-500"
+                    >
+                        Registrese
+                    </Link>
+                </span>
             </form>
         </div>
     );

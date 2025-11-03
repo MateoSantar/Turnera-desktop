@@ -1,9 +1,10 @@
 import bg_image from '@/public/bg_image.png'
 import LoginPage from '@/app/components/login';
 import Image from 'next/image';
+import Footer from '@/app/components/footer';
 export default async function Home() {
   return (
-     <main className="relative min-h-screen w-screen flex items-center justify-center overflow-hidden bg-black">
+     <main className="relative min-h-screen w-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       <Image
         src={bg_image}
         alt="Fondo de la página de inicio de sesión"
@@ -14,9 +15,11 @@ export default async function Home() {
 
       <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-      <div className="relative z-10 w-screen max-w-md p-8 bg-white/10 backdrop-blur-md rounded-xl shadow-[0px_8px_24px_-4px_rgba(255,_255,_255,_0.4)] border border-white/20">
+      <div className="w-screen max-w-md p-8 pb-0 bg-white/10 backdrop-blur-md rounded-xl shadow-[0px_8px_24px_-4px_rgba(255,_255,_255,_0.4)] border border-white/20">
         <LoginPage />
+        <Footer/>
       </div>
+      
     </main>
   );
 }
