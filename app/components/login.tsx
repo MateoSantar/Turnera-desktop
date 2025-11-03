@@ -1,7 +1,6 @@
 'use client';
-import Image from 'next/image';
 import { Poppins } from 'next/font/google';
-import { EnvelopeIcon, KeyIcon } from '@heroicons/react/24/solid';
+import { EnvelopeIcon, KeyIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -59,7 +58,7 @@ export default function LoginPage() {
                 <span className='text-sm flex flex-row justify-center mt-5'>
                     ¿No posee cuenta?
                     <Link
-                        href={""} /* Aca redirige al componente de registro */
+                        href={"/signin"} /* Aca redirige al componente de registro */
                         className="ml-1 text-blue-500"
                     >
                         Registrese
