@@ -10,7 +10,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3000/api/auth', {
+        const response = await fetch('http://localhost:3000/api/auth', { //Cambiar a endpoint de 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
